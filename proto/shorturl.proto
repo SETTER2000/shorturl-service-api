@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+package shorturl;
+option go_package = "shorturl/internal/controller/grpc";
+//import "google/protobuf/timestamp.proto";
+
+message Shorturl  {
+  string  slug = 2;         // Строковый идентификатор
+  string url = 3;          // URL для сокращения
+  //    *config.Config ;
+  string  user_id = 4;     // Идентификатор пользователя
+  bool  del = 5; // флаг, удалён ли URL пользователем или нет
+}
+
+// Our address book file is just one of these.
+message Shorturls {
+  repeated Shorturl shorturl = 1;
+}
+
+// List -.
+message List  {
+  string short_url = 4;                // Строковый идентификатор
+  string original_url = 5;// URL для сокращения
+}
+
+// User -.
+message User  {
+  string user_id = 3;
+  repeated string del_link = 2;
+  repeated List urls = 1;
+}
+
+// CountUsers кол-во пользователей в сервисе
+
+
+
+
+// Static -.
+message Static  {
+  message  CountURLs {
+    int32 count_urls = 1; // кол-во сокращённых URL в сервисе
+  }
+  message CountUsers {
+    int32 count_users = 1; // кол-во пользователей в сервисе
+  }
+}
+
+//--
+
+message PostRequest {
+  Shorturl shorturl = 1;
+}
+
+message PostResponse {
+  string error = 1; // ошибка
+}
+
+message LongLinkRequest {
+  Shorturl shorturl = 1;
+}
+
+message LongLinkResponse {
+  string shorturl = 1; // короткий url вернуть
+  string error = 2; // ошибка
+}
+
+message ShortLinkRequest {
+  Shorturl shorturl = 1;
+}
+
+message ShortLinkResponse {
+  string shorturl = 1; // короткий url вернуть
+  string error = 2; // ошибка
+}
+
+message UserAllLinkRequest {
+  User user = 1;
+}
+
+message UserAllLinkResponse {
+  string user = 1; // короткий url вернуть
+  string error = 2; // ошибка
+}
+
+message AllLinkRequest {
+  User user = 1;
+}
+
+message AllLinkResponse {
+  string user = 1; // короткий url вернуть
+  string error = 2; // ошибка
+}
+
+message AllUsersRequest {
+  User user = 1;
+}
+
+message AllUsersResponse {
+  string user = 1; // короткий url вернуть
+  string error = 2; // ошибка
+}
+
+message UserDelLinkRequest {
+  User user = 1;
+}
+
+message UserDelLinkResponse {
+  string error = 1; // ошибка
+}
+
+message ReadServiceRequest {
+  User user = 1;
+}
+
+message ReadServiceResponse {
+  string error = 1; // ошибка
+}
+
+message SaveServiceRequest {
+  User user = 1;
+}
+
+message SaveServiceResponse {
+  string error = 1; // ошибка
+}
+
+// Интерфейс gRPC сервиса
+service IShorturl {
+  //	Post(context.Context, *entity.Shorturl) error
+  rpc Post(PostRequest) returns (PostResponse);
+  //	LongLink(context.Context, *entity.Shorturl) (string, error)
+  rpc LongLink(LongLinkRequest) returns (LongLinkResponse);
+  //	ShortLink(context.Context, *entity.Shorturl) (*entity.Shorturl, error)
+  rpc ShortLink(ShortLinkRequest) returns (ShortLinkResponse);
+  //	UserAllLink(ctx context.Context, u *entity.User) (*entity.User, error)
+  rpc UserAllLink(UserAllLinkRequest) returns (UserAllLinkResponse);
+  //	AllLink() (entity.CountURLs, error)
+  rpc AllLink(AllLinkRequest) returns (AllLinkResponse);
+  //	AllUsers() (entity.CountUsers, error)
+  rpc AllUsers(AllUsersRequest) returns (AllUsersResponse);
+  //	UserDelLink(ctx context.Context, u *entity.User) error
+  rpc UserDelLink(UserDelLinkRequest) returns (UserDelLinkResponse);
+  //	ReadService() error
+  rpc ReadService(ReadServiceRequest) returns (ReadServiceResponse);
+  //	SaveService() error
+  rpc SaveService(SaveServiceRequest) returns(SaveServiceResponse);
+}
