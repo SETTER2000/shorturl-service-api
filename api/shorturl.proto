@@ -1,7 +1,8 @@
+
 syntax = "proto3";
 
 package shorturl;
-option go_package = "shorturl/internal/controller/grpc";
+option go_package = "shorturl-service-api/api";
 //import "google/protobuf/timestamp.proto";
 
 message Shorturl  {
@@ -19,8 +20,8 @@ message Shorturls {
 
 // List -.
 message List  {
-  string short_url = 4;                // Строковый идентификатор
-  string original_url = 5;// URL для сокращения
+  string short_url = 4;     // Строковый идентификатор
+  string original_url = 5;  // URL для сокращения
 }
 
 // User -.
