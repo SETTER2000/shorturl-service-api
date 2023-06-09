@@ -4,7 +4,7 @@
 // - protoc             v3.20.3
 // source: api/shorturl.proto
 
-package grpc
+package api
 
 import (
 	context "context"
