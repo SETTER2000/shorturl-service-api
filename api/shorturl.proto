@@ -1,8 +1,8 @@
 
 syntax = "proto3";
 
-package shorturl;
-option go_package = "shorturl-service-api/api";
+package proto;
+option go_package = "shorturl/internal/controller/grpc/proto";
 //import "google/protobuf/timestamp.proto";
 
 message Shorturl  {

@@ -4,7 +4,7 @@
 // - protoc             v3.20.3
 // source: api/shorturl.proto
 
-package api
+package proto
 
 import (
 	context "context"
@@ -19,15 +19,15 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	IShorturl_Post_FullMethodName        = "/shorturl.IShorturl/Post"
-	IShorturl_LongLink_FullMethodName    = "/shorturl.IShorturl/LongLink"
-	IShorturl_ShortLink_FullMethodName   = "/shorturl.IShorturl/ShortLink"
-	IShorturl_UserAllLink_FullMethodName = "/shorturl.IShorturl/UserAllLink"
-	IShorturl_AllLink_FullMethodName     = "/shorturl.IShorturl/AllLink"
-	IShorturl_AllUsers_FullMethodName    = "/shorturl.IShorturl/AllUsers"
-	IShorturl_UserDelLink_FullMethodName = "/shorturl.IShorturl/UserDelLink"
-	IShorturl_ReadService_FullMethodName = "/shorturl.IShorturl/ReadService"
-	IShorturl_SaveService_FullMethodName = "/shorturl.IShorturl/SaveService"
+	IShorturl_Post_FullMethodName        = "/proto.IShorturl/Post"
+	IShorturl_LongLink_FullMethodName    = "/proto.IShorturl/LongLink"
+	IShorturl_ShortLink_FullMethodName   = "/proto.IShorturl/ShortLink"
+	IShorturl_UserAllLink_FullMethodName = "/proto.IShorturl/UserAllLink"
+	IShorturl_AllLink_FullMethodName     = "/proto.IShorturl/AllLink"
+	IShorturl_AllUsers_FullMethodName    = "/proto.IShorturl/AllUsers"
+	IShorturl_UserDelLink_FullMethodName = "/proto.IShorturl/UserDelLink"
+	IShorturl_ReadService_FullMethodName = "/proto.IShorturl/ReadService"
+	IShorturl_SaveService_FullMethodName = "/proto.IShorturl/SaveService"
 )
 
 // IShorturlClient is the client API for IShorturl service.
@@ -378,7 +378,7 @@ func _IShorturl_SaveService_Handler(srv interface{}, ctx context.Context, dec fu
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var IShorturl_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "shorturl.IShorturl",
+	ServiceName: "proto.IShorturl",
 	HandlerType: (*IShorturlServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
