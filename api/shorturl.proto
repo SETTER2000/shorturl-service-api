@@ -1,4 +1,3 @@
-
 syntax = "proto3";
 
 package proto;
@@ -11,6 +10,9 @@ message Shorturl  {
   //    *config.Config ;
   string  user_id = 4;     // Идентификатор пользователя
   bool  del = 5; // флаг, удалён ли URL пользователем или нет
+}
+message ShorturlResponse{
+    string result = 1; // URL для сокращения
 }
 
 // Our address book file is just one of these.
@@ -53,7 +55,8 @@ message PostRequest {
 }
 
 message PostResponse {
-  string error = 1; // ошибка
+  ShorturlResponse result = 2;
+  string error = 3; // ошибка
 }
 
 message LongLinkRequest {
